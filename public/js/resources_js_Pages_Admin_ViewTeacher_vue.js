@@ -21,7 +21,8 @@ __webpack_require__.r(__webpack_exports__);
   props: ["teacher", "admin", "questions"],
   data: function data() {
     return {
-      question: ""
+      question: "",
+      interviewdate: ""
     };
   },
   components: {
@@ -40,14 +41,41 @@ __webpack_require__.r(__webpack_exports__);
       this.question = null;
     },
     accept: function accept() {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post('/accepttest', {
-        "id": this.teacher.id
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/accepttest", {
+        id: this.teacher.id
       });
     },
     reject: function reject() {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post('/rejecttest', {
-        "id": this.teacher.id
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/rejecttest", {
+        id: this.teacher.id
       });
+    },
+    setInterviewDate: function setInterviewDate() {
+      var alldata = {
+        id: this.teacher.id,
+        interviewdate: this.interviewdate
+      };
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/setinterviewdate", alldata);
+      alert("Date Set");
+    },
+    acceptInterview: function acceptInterview() {
+      var alldata = {
+        id: this.teacher.id,
+        interviewsat: "accepted"
+      };
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/acceptinterview", alldata);
+      alert("Interview Accepted");
+    },
+    rejectInterview: function rejectInterview() {
+      var alldata = {
+        id: this.teacher.id,
+        interviewsat: "rejected"
+      };
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/rejectinterview", alldata);
+      alert("Reject Interview");
+    },
+    takeInterview: function takeInterview() {
+      alert("Join the link");
     }
   }
 });
@@ -279,6 +307,72 @@ var _hoisted_50 = {
   "class": "text-base inline-block ml-10"
 };
 var _hoisted_51 = {
+  "class": "bg-white shadow"
+};
+var _hoisted_52 = {
+  "class": "max-w-7xl mt-10 mx-auto py-6 px-4 sm:px-6 lg:px-8"
+};
+
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex justify-between"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "text-3xl font-bold text-gray-900"
+}, " Interview Date ")], -1
+/* HOISTED */
+);
+
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "interviewdate",
+  "class": "sr-only"
+}, "Interview Date", -1
+/* HOISTED */
+);
+
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+}, " Set Date ")], -1
+/* HOISTED */
+);
+
+var _hoisted_56 = {
+  key: 0,
+  "class": "bg-white shadow"
+};
+var _hoisted_57 = {
+  "class": "max-w-7xl mt-10 mx-auto py-6 px-4 sm:px-6 lg:px-8"
+};
+
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex justify-between"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "text-3xl font-bold text-gray-900"
+}, " Interview Status ")], -1
+/* HOISTED */
+);
+
+var _hoisted_59 = {
+  "class": "flex justify-start mt-10"
+};
+
+var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, " Take Interview ", -1
+/* HOISTED */
+);
+
+var _hoisted_61 = [_hoisted_60];
+
+var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, " Accept Interview ", -1
+/* HOISTED */
+);
+
+var _hoisted_63 = [_hoisted_62];
+
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, " Reject Interview ", -1
+/* HOISTED */
+);
+
+var _hoisted_65 = [_hoisted_64];
+var _hoisted_66 = {
   "class": "footer"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -370,7 +464,41 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     )])])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])]);
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [_hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "mt-8 space-y-6 myform max-w-2xl",
+    onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.setInterviewDate && $options.setInterviewDate.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_54, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "interviewdate",
+    name: "interviewdate",
+    type: "date",
+    required: "",
+    "class": "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
+    placeholder: "Interview Date",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.interviewdate = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.interviewdate]])]), _hoisted_55], 32
+  /* HYDRATE_EVENTS */
+  )])])]), $props.teacher.interviewstatus != 'accepted' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [_hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    onClick: _cache[7] || (_cache[7] = function () {
+      return $options.takeInterview && $options.takeInterview.apply($options, arguments);
+    }),
+    "class": "flex justify-center items-center bg-amber-200 w-36 h-36 mr-10"
+  }, _hoisted_61), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    onClick: _cache[8] || (_cache[8] = function () {
+      return $options.acceptInterview && $options.acceptInterview.apply($options, arguments);
+    }),
+    "class": "flex justify-center items-center bg-amber-200 w-36 h-36 mr-10"
+  }, _hoisted_63), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    onClick: _cache[9] || (_cache[9] = function () {
+      return $options.rejectInterview && $options.rejectInterview.apply($options, arguments);
+    }),
+    "class": "flex justify-center items-center bg-amber-200 w-36 h-36 mr-10"
+  }, _hoisted_65)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])]);
 }
 
 /***/ }),

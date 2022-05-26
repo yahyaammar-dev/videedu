@@ -689,11 +689,11 @@ select {
 .mr-10 {
   margin-right: 2.5rem;
 }
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
 .ml-10 {
   margin-left: 2.5rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 .ml-4 {
   margin-left: 1rem;
@@ -752,6 +752,15 @@ select {
 .h-10 {
   height: 2.5rem;
 }
+.h-80 {
+  height: 20rem;
+}
+.h-28 {
+  height: 7rem;
+}
+.h-36 {
+  height: 9rem;
+}
 .min-h-full {
   min-height: 100%;
 }
@@ -787,6 +796,12 @@ select {
 }
 .w-10 {
   width: 2.5rem;
+}
+.w-28 {
+  width: 7rem;
+}
+.w-36 {
+  width: 9rem;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -828,6 +843,9 @@ select {
 }
 .justify-between {
   justify-content: space-between;
+}
+.justify-evenly {
+  justify-content: space-evenly;
 }
 .space-y-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -956,6 +974,10 @@ select {
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+.bg-amber-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 230 138 / var(--tw-bg-opacity));
 }
 .object-cover {
   -o-object-fit: cover;

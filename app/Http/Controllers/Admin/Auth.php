@@ -112,4 +112,22 @@ class Auth extends Controller
         $teacher->teststatus = "rejected";
         $teacher->save();
     }
+
+    public function setinterviewdate(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->interviewdate = $req->interviewdate;
+        $teacher->save();
+    }
+
+    public function acceptinterview(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->interviewstatus = $req->interviewsat;
+        $teacher->save();
+    }
+
+    public function rejectinterview(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->interviewstatus = $req->interviewsat;
+        $teacher->save();
+    }
 }

@@ -27,5 +27,8 @@ Route::post('/accepttest',[Auth::class,'accept']);
 
 Route::post('/rejecttest',[Auth::class,'reject']);
 
+Route::post('/setinterviewdate', [Auth::class, 'setinterviewdate']);
 
+Route::post('/acceptinterview', [Auth::class, 'acceptinterview']);
 
+Route::post('/rejectinterview', [Auth::class, 'rejectinterview']);
