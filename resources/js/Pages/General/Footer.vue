@@ -1,6 +1,6 @@
 <template lang="pug">
     
-<div class="w-full absolute bottom-0">
+<div class="w-full">
 
 <footer class="text-center bg-gray-900 text-white">
   <div class="container px-6 pt-6  m-auto">

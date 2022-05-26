@@ -23,11 +23,13 @@ class CreateTeacherTable extends Migration
             $table->String('idfront');
             $table->String('idback');
             $table->String('balance')->nullable();
-            $table->String('idstatus')->default('false');;
-            $table->String('teststatus')->default('false');;
+            $table->String('idstatus')->default('false');
+            $table->String('teststatus')->default('false');
             $table->String('interviewstatus')->default('false');
-            $table->foreignId('admin_id')->constrained();
+            $table->String('admin_id')->default('1');
             $table->date('interviewdate')->nullable();
+            $table->String('bio');
+            $table->integer('hourlyrate');
             $table->timestamps();
         });
     }

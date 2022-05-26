@@ -6,27 +6,12 @@
     <div
         class="min-h-full flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
     >
-
-
-
-
-
      <div v-if="Object.keys(this.errors).length > 0" class="bg-red-100 border mb-10 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"> 
             {{ Object.values(errors)[0] }}
         </div>
-
-
-
      <div v-if="successMessage" class="bg-green-100 border border-green-400  mb-10 text-green-700 px-4 py-3 rounded relative" role="alert"> 
             {{successMessage}}
         </div>
-
-
-
-
-
-
-
         <div class="max-w-md w-full space-y-8">
             <div>
                 <img
@@ -93,6 +78,39 @@
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Phone"
                             v-model="teacher.phone"
+                        />
+                    </div>
+                    <div>
+                        <label for="bio" class="sr-only">Bio</label>
+                        <input
+                            id="bio"
+                            name="bio"
+                            type="text"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Bio"
+                            v-model="teacher.bio"
+                        />
+                    </div>
+                    <div>
+                        <label for="hourlyrate" class="sr-only">Hourly Rate</label>
+                        <input
+                            id="hourlyrate"
+                            name="hourlyrate"
+                            type="text"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Hourly rate"
+                            v-model="teacher.hourlyrate"
+                        />
+                    </div>
+                    <div>
+                        <label for="adminid" class="sr-only">Admin ID</label>
+                        <input
+                            id="adminid"
+                            name="adminid"
+                            type="text"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Admin ID"
+                            v-model="teacher.adminid"
                         />
                     </div>
                     <div
@@ -177,7 +195,10 @@ export default {
         phone: '',
         image: '',
         idfront: '',
-        idback: ''
+        idback: '',
+        adminid: '',
+        bio: '',
+        hourlyrate: ''
       }
     }
   },
@@ -192,7 +213,9 @@ export default {
       this.teacher.email = null
       this.teacher.password = null
       this.teacher.phone = null
-
+      this.teacher.adminid = null
+      this.teacher.bio = null
+      this.teacher.hourlyrate = null
     }
   }
 }

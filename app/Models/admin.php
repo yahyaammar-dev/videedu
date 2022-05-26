@@ -2,12 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\teacher;
+use App\Models\questions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class admin extends Model
 {
     use HasFactory;
     public $table = "admin";
     public $gaurded = [];
+
+    public function teachers(){
+        return $this->hasMany(teacher::class);
+    }
+
 }

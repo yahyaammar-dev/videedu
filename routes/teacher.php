@@ -16,4 +16,4 @@ Route::get('/loginteacher', function () {
     return Inertia::render('Teacher/Login');
 })->name("teacherlogin");
 
-
+Route::post('/submittest', [Auth::class, 'submittest']);

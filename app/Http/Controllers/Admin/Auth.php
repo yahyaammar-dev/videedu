@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Inertia\Inertia;
 use App\Models\admin;
+use App\Models\teacher;
+use App\Models\questions;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -58,10 +60,56 @@ class Auth extends Controller
         
         $result = admin::where('email',$req->email)
             ->where('password',$req->password)  
-            ->get();
+            ->get()->first();
 
-        if(count($result)>0){
-            return Inertia::render('Admin/Adminaccount');            
+        if(isset($result)){
+ 
+            $teachers = admin::find($result["id"])->teachers;
+ 
+            return Inertia::render('Admin/Adminaccount',[
+                'teachers' => $teachers,
+                'admin' => $result
+            ]);            
         }
+    }
+
+    public function viewteacher(REQUEST $req){
+        $admin = admin::find($req->adminid);
+        $teacher = teacher::find($req->id);
+        $questions = teacher::find($req->id)->question;
+        return Inertia::render('Admin/ViewTeacher',[
+            'teacher' => $teacher,
+            'admin'=> $admin,
+            'questions' => $questions
+        ]);
+    }
+
+    public function verifyteacher(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->idstatus = true;
+        $teacher->save();        
+    }
+
+    public function addQuestion(REQUEST $req){
+        $question = new questions; 
+        $question->admin_id = $req->admin; 
+        $question->teacher_id = $req->teacher;      
+        $question->question = $req->question;
+        $question->save();  
+        $teacher = teacher::find($req->teacher);
+        $teacher->teststatus = "false";  
+        $teacher->save();  
+    }
+
+    public function accept(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->teststatus = "accepted";
+        $teacher->save();
+    }
+
+   public function reject(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->teststatus = "rejected";
+        $teacher->save();
     }
 }

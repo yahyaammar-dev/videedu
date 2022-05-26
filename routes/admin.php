@@ -17,3 +17,15 @@ Route::get('/loginadmin', function () {
 })->name("adminlogin");
 
 
+Route::get('/adminviewteacher/{adminid}/{id}',[Auth::class,'viewteacher']);
+
+Route::post('/adminverifyteacher',[Auth::class,'verifyteacher']);
+
+Route::post('/addquestion',[Auth::class,'addQuestion']);
+
+Route::post('/accepttest',[Auth::class,'accept']);
+
+Route::post('/rejecttest',[Auth::class,'reject']);
+
+
+

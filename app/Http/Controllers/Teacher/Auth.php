@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use Inertia\Inertia;
 use App\Models\teacher;
+use App\Models\questions;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,8 @@ class Auth extends Controller
             'email' => 'required|min:5|unique:teacher,email',
             'password'=> 'required|min:8',
             'phone'=> 'required|min:11',
+            'bio' => 'required|min:50|max:80',
+            'hourlyrate' => 'required|min:1',
             'image'=> 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
             'idfront'=> 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
             'idback'=> 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
@@ -34,12 +37,20 @@ class Auth extends Controller
             $idback = $req->file('idback')->store('/teacher/account', 'public');
         }
 
+        if(!isset($req->adminid)){
+            $adminid = 1;
+        }else{
+            $adminid = $req->adminid;
+        }
 
         $teacher = new teacher;
         $teacher->name = $req->name;
         $teacher->email = $req->email;
         $teacher->password = $req->password;
         $teacher->phone = $req->phone;
+        $teacher->admin_id = $adminid;
+        $teacher->bio = $req->bio;
+        $teacher->hourlyrate = $hourlyrate;
         $teacher->image = $image;
         $teacher->idfront = $idfront;
         $teacher->idback = $idback;
@@ -59,10 +70,30 @@ class Auth extends Controller
         
         $result = teacher::where('email',$req->email)
             ->where('password',$req->password)  
-            ->get();
+            ->first();
 
-        if(count($result)>0){
-            return Inertia::render('Teacher/Teacheraccount');            
+        if(isset($result)){
+
+            $questions = teacher::find($result["id"])->question;
+
+            return Inertia::render('Teacher/Teacheraccount',[
+                "teacher" => $result,
+                "questions" => $questions
+            ]);            
         }
+    }
+
+
+
+
+    public function submittest(REQUEST $req){
+        $ques = questions::where('teacher_id',$req->id)->get();
+        $answers = $req->answers;
+        for($i=0; $i<count($ques); $i++){
+            $ques[$i]["answer"]= $answers[$i];
+            $ques[$i]["status"] = true;
+            $ques[$i]->save();
+        }
+        // return Inertia::render('Teacher/Teacheraccount');
     }
 }

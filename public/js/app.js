@@ -28203,6 +28203,14 @@ var map = {
 		"./resources/js/Pages/Admin/Signup.vue",
 		"resources_js_Pages_Admin_Signup_vue"
 	],
+	"./Admin/ViewTeacher": [
+		"./resources/js/Pages/Admin/ViewTeacher.vue",
+		"resources_js_Pages_Admin_ViewTeacher_vue"
+	],
+	"./Admin/ViewTeacher.vue": [
+		"./resources/js/Pages/Admin/ViewTeacher.vue",
+		"resources_js_Pages_Admin_ViewTeacher_vue"
+	],
 	"./General/Footer": [
 		"./resources/js/Pages/General/Footer.vue",
 		"resources_js_Pages_General_Footer_vue"
@@ -28388,7 +28396,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21.1","_id":"axios@0.21.4","_inB
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Admin_Adminaccount_vue":1,"resources_js_Pages_Admin_Login_vue":1,"resources_js_Pages_Admin_Signup_vue":1,"resources_js_Pages_General_Footer_vue":1,"resources_js_Pages_General_Header_vue":1,"resources_js_Pages_General_Home_vue":1,"resources_js_Pages_Teacher_Login_vue":1,"resources_js_Pages_Teacher_Signup_vue":1,"resources_js_Pages_Teacher_Teacheraccount_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Admin_Adminaccount_vue":1,"resources_js_Pages_Admin_Login_vue":1,"resources_js_Pages_Admin_Signup_vue":1,"resources_js_Pages_Admin_ViewTeacher_vue":1,"resources_js_Pages_General_Footer_vue":1,"resources_js_Pages_General_Header_vue":1,"resources_js_Pages_General_Home_vue":1,"resources_js_Pages_Teacher_Login_vue":1,"resources_js_Pages_Teacher_Signup_vue":1,"resources_js_Pages_Teacher_Teacheraccount_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
