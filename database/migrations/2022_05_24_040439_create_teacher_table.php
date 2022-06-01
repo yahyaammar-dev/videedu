@@ -29,6 +29,7 @@ class CreateTeacherTable extends Migration
             $table->String('admin_id')->default('1');
             $table->date('interviewdate')->nullable();
             $table->String('bio');
+            $table->String('interviewlink')->nullable();
             $table->integer('hourlyrate');
             $table->timestamps();
         });

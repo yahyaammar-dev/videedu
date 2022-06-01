@@ -2,6 +2,7 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VideoChatController;
 
 Route::get('/', function () {
     return Inertia::render('General/Home');

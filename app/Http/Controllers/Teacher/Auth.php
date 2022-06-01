@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Teacher;
 
 use Inertia\Inertia;
+use App\Models\degree;
 use App\Models\teacher;
+use App\Models\classroom;
 use App\Models\questions;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -96,4 +98,52 @@ class Auth extends Controller
         }
         // return Inertia::render('Teacher/Teacheraccount');
     }
+
+
+    public function submitdegree(REQUEST $req){
+        $req->validate([
+            'title'=> 'required|min:3',
+            'degree'=> 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
+        ]);
+ 
+        $degree = new degree;
+        $degree->teacher_id = $req->id;
+        $degree->title = $req->title;        
+        if ($req->hasFile('degree')) {
+            $degreefile = $req->file('degree')->store('/teacher/account', 'public');
+        }
+        $degree->url = $degreefile;        
+        $degree->save();
+    }
+
+    public function createClass(Request $req){
+
+        $req->validate([
+            'name' => 'required|min:3',
+            'bio' => 'required|min:5',
+            'classesperweek'=> 'required|min:1',
+            'monthlyfees'=> 'required|min:1',
+            'totalclasses' => 'required|min:1',
+            'image'=> 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
+        ]);
+
+
+        if ($req->hasFile('image')) {
+            $image = $req->file('image')->store('/teacher/account', 'public');
+        }
+
+        $classroom = new classroom;
+        $classroom->name = $req->name;
+        $classroom->bio = $req->bio;
+        $classroom->classesperweek = $req->classesperweek;
+        $classroom->monthlyfees = $req->monthlyfees;
+        $classroom->totalclasses = $req->totalclasses;
+        $classroom->image = $image;
+        $classroom->status = "pending";
+        $classroom->save();
+
+ //     return redirect()->route('teachersignup')->with("successMessage","Congratulations, You are registered!!!");
+    }
+
+
 }

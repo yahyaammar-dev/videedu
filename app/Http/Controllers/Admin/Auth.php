@@ -77,10 +77,12 @@ class Auth extends Controller
         $admin = admin::find($req->adminid);
         $teacher = teacher::find($req->id);
         $questions = teacher::find($req->id)->question;
+        $degrees = teacher::find($req->id)->degree;
         return Inertia::render('Admin/ViewTeacher',[
             'teacher' => $teacher,
             'admin'=> $admin,
-            'questions' => $questions
+            'questions' => $questions,
+            'degrees' => $degrees
         ]);
     }
 
@@ -130,4 +132,24 @@ class Auth extends Controller
         $teacher->interviewstatus = $req->interviewsat;
         $teacher->save();
     }
+
+    public function interviewlink(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->interviewlink = $req->interviewlink;
+        $teacher->save();
+    }
+
+    public function acceptdegrees(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->degreestatus = "accepted";
+        $teacher->save();
+    }
+
+    public function rejectdegrees(REQUEST $req){
+        $teacher = teacher::find($req->id);
+        $teacher->degreestatus = "rejected";
+        $degrees = teacher::find($req->id)->degree->delete();
+        $teacher->save();
+    }
+
 }

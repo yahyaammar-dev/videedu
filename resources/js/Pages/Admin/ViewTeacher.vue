@@ -253,9 +253,81 @@
                                 Reject Interview
                             </button>
                         </div>
+                         <div class="w-96">
+                        <form
+                            class="mt-8 space-y-6 myform max-w-2xl"
+                            @submit.prevent="submitInterviewLink"
+                        >
+                            <div>
+                                <label for="interviewdate" class="sr-only"
+                                    >Interview Link</label
+                                >
+                                <input
+                                    id="interviewlink"
+                                    name="interviewlink"
+                                    type="text"
+                                    required=""
+                                    class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                    placeholder="Interview Link"
+                                    v-model="interviewlink"
+                                />
+                            </div>
+
+                            <div>
+                                <button
+                                    type="submit"
+                                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    Set Interview Link
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+            <div class="bg-white shadow" v-if="teacher.degreestatus != 'accepted'">
+                <div class="max-w-7xl mt-10 mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between">
+                        <h1 class="text-3xl font-bold text-gray-900">
+                            Submitted Degrees
+                        </h1>
+                    </div>
+
+
+                    <div class="flex justify-end">
+                            <button
+                                @click="acceptdegrees"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5"
+                            >
+                                Accept
+                            </button>
+                            <button
+                                @click="rejectdegrees"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            >
+                                Reject
+                            </button>
+                        </div>
+
+                    <div class="flex flex-wrap">
+                        <div v-for="degree in degrees" :key="degree.id">
+                            <img :src="'http://localhost:8001/storage/' + degree.url "  class="w-52 h-64"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
 
 
         </div>
@@ -270,11 +342,12 @@ import Header from "../General/Header.vue";
 import Footer from "../General/Footer.vue";
 import { Inertia } from "@inertiajs/inertia";
 export default {
-    props: ["teacher", "admin", "questions"],
+    props: ["teacher", "admin", "questions","degrees"],
     data() {
         return {
             question: "",
             interviewdate: "",
+            interviewlink: ""
         };
     },
     components: {
@@ -323,8 +396,22 @@ export default {
             alert("Reject Interview")
         },
         takeInterview(){
-            alert("Join the link")
-        }
+            //Inertia.post("/takeinterview", alldata)
+            window.open("http://localhost:3035", '_blank').focus();
+        },
+        submitInterviewLink(){
+              let alldata = {
+                id : this.teacher.id,
+                interviewlink : this.interviewlink
+            }
+            Inertia.post("/interviewlink", alldata)
+        },
+        acceptdegrees(){
+            Inertia.post('/acceptdegrees',this.teacher);
+        },
+        rejectdegrees(){
+            Inertia.post('/rejectdegrees', this.teacher)
+        }       
     },
 };
 </script>

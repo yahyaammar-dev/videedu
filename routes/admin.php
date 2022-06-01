@@ -32,3 +32,11 @@ Route::post('/setinterviewdate', [Auth::class, 'setinterviewdate']);
 Route::post('/acceptinterview', [Auth::class, 'acceptinterview']);
 
 Route::post('/rejectinterview', [Auth::class, 'rejectinterview']);
+
+Route::post('/takeinterview',[Auth::class, 'takeinterview']);
+
+Route::post('/interviewlink',[Auth::class, 'interviewlink']);
+
+Route::post('/rejectdegrees',[Auth::class, 'rejectdegrees']);
+
+Route::post('/acceptdegrees',[Auth::class, 'acceptdegrees']);

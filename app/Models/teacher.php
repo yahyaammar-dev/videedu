@@ -17,4 +17,8 @@ class teacher extends Model
         return $this->hasMany(questions::class, 'teacher_id', 'id');
     }
 
+    public function degree(){
+        return $this->hasMany(degree::class, 'teacher_id', 'id');
+    }
+
 }
