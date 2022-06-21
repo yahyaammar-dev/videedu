@@ -322,14 +322,56 @@
                     </div>
                 </div>
             </div>
+        
+        
+        
+        
+        
+        
+            <div class="bg-white shadow" v-if="teacher.degreestatus != 'accepted'">
+                <div class="max-w-7xl mt-10 mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between mt-10">
+                        <h1 class="text-3xl font-bold text-gray-900 mb-10">
+                            Pending classrooms
+                        </h1>
+                    </div>
 
-
-
-
-
-
-
-
+                    <div class="flex flex-wrap justify-between">
+                        <div v-for="classroom in classrooms" :key="classroom.id">
+                            <div v-if="classroom.status != 'accepted'" class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                <a href="#">
+                                     <img :src="'http://localhost:8001/storage/' + classroom.image "  class="rounded-t-lg w-52 h-64"/>
+                                </a>
+                                <div class="p-5">
+                                    <a href="#">
+                                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Name: {{classroom.name}}</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Bio: {{classroom.bio}}</p>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">classes per week: {{classroom.classesperweek}}</p>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Monthly Fees: {{classroom.monthlyfees}}</p>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Total Classes: {{classroom.totalclasses}}</p>
+                                    <div class="flex">    
+                                        <a @click="approveclass(classroom.id)"  class="mr-5 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 cursor-pointer dark:focus:ring-blue-800">
+                                            Approve
+                                            <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        </a>
+                                        <a  @click="deleteclass(classroom.id)" class="cursor-pointer inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Reject
+                                            <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
         </div>
         <div class="footer">
             <Footer />
@@ -342,7 +384,7 @@ import Header from "../General/Header.vue";
 import Footer from "../General/Footer.vue";
 import { Inertia } from "@inertiajs/inertia";
 export default {
-    props: ["teacher", "admin", "questions","degrees"],
+    props: ["teacher", "admin", "questions","degrees","classrooms"],
     data() {
         return {
             question: "",
@@ -411,6 +453,20 @@ export default {
         },
         rejectdegrees(){
             Inertia.post('/rejectdegrees', this.teacher)
+        },
+        approveclass(id){
+          let data = {
+              c_id : id,
+              t_id : this.teacher.id
+          }
+          Inertia.post('/approveclass', data)
+        },
+        deleteclass(id){
+            let data = {
+              c_id : id,
+              t_id : this.teacher.id
+            }
+            Inertia.post('/deleteclass',data)
         }       
     },
 };

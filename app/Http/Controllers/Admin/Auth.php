@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\admin;
 use App\Models\teacher;
 use App\Models\questions;
+use App\Models\classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -78,11 +79,13 @@ class Auth extends Controller
         $teacher = teacher::find($req->id);
         $questions = teacher::find($req->id)->question;
         $degrees = teacher::find($req->id)->degree;
+        $classrooms = teacher::find($req->id)->classroom;
         return Inertia::render('Admin/ViewTeacher',[
             'teacher' => $teacher,
             'admin'=> $admin,
             'questions' => $questions,
-            'degrees' => $degrees
+            'degrees' => $degrees,
+            'classrooms' => $classrooms
         ]);
     }
 
@@ -148,8 +151,21 @@ class Auth extends Controller
     public function rejectdegrees(REQUEST $req){
         $teacher = teacher::find($req->id);
         $teacher->degreestatus = "rejected";
-        $degrees = teacher::find($req->id)->degree->delete();
+        $degrees = teacher::find($req->id)->degree;
+        $degrees->each->delete();
         $teacher->save();
     }
+
+
+    public function approveclass(REQUEST $req){
+        $classroom = classroom::find($req->c_id);
+        $classroom->status = 'accepted';
+        $classroom->save();
+    }
+
+    public function deleteclass(REQUEST $req){
+        $classroom = classroom::find($req->c_id)->delete();
+    }
+
 
 }

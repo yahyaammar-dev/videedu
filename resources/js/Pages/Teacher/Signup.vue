@@ -209,13 +209,13 @@ export default {
       this.teacher.idback = this.$refs.idback.files[0];
       Inertia.post("/createteacher",this.teacher);
       document.querySelector(".myform").reset();
-      this.teacher.name = null
-      this.teacher.email = null
-      this.teacher.password = null
-      this.teacher.phone = null
-      this.teacher.adminid = null
-      this.teacher.bio = null
-      this.teacher.hourlyrate = null
+    //   this.teacher.name = null
+    //   this.teacher.email = null
+    //   this.teacher.password = null
+    //   this.teacher.phone = null
+    //   this.teacher.adminid = null
+    //   this.teacher.bio = null
+    //   this.teacher.hourlyrate = null
     }
   }
 }

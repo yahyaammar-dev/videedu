@@ -40,3 +40,7 @@ Route::post('/interviewlink',[Auth::class, 'interviewlink']);
 Route::post('/rejectdegrees',[Auth::class, 'rejectdegrees']);
 
 Route::post('/acceptdegrees',[Auth::class, 'acceptdegrees']);
+
+Route::post('/approveclass', [Auth::class, 'approveclass']);
+
+Route::post('/deleteclass', [Auth::class, 'deleteclass']);

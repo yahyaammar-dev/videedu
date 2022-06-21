@@ -21,3 +21,4 @@ Route::post('/submittest', [Auth::class, 'submittest']);
 Route::post('/submitdegree', [Auth::class, 'submitdegree']);
 
 Route::post('/createclass', [Auth::class, 'createClass']);
+

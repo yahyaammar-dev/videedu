@@ -31,6 +31,7 @@ class CreateTeacherTable extends Migration
             $table->String('bio');
             $table->String('interviewlink')->nullable();
             $table->integer('hourlyrate');
+            $table->String('degreestatus')->nullable();
             $table->timestamps();
         });
     }

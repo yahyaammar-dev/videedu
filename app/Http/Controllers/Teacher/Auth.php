@@ -26,6 +26,7 @@ class Auth extends Controller
             'idback'=> 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);
 
+        echo "hourlyrate";
 
         if ($req->hasFile('image')) {
             $image = $req->file('image')->store('/teacher/account', 'public');
@@ -52,7 +53,7 @@ class Auth extends Controller
         $teacher->phone = $req->phone;
         $teacher->admin_id = $adminid;
         $teacher->bio = $req->bio;
-        $teacher->hourlyrate = $hourlyrate;
+        $teacher->hourlyrate = $req->hourlyrate;
         $teacher->image = $image;
         $teacher->idfront = $idfront;
         $teacher->idback = $idback;
@@ -73,15 +74,19 @@ class Auth extends Controller
         $result = teacher::where('email',$req->email)
             ->where('password',$req->password)  
             ->first();
-
+ 
         if(isset($result)){
 
             $questions = teacher::find($result["id"])->question;
 
+            $classrooms = teacher::find($result["id"])->classroom;
+
             return Inertia::render('Teacher/Teacheraccount',[
                 "teacher" => $result,
-                "questions" => $questions
-            ]);            
+                "questions" => $questions,
+                "classrooms" => $classrooms
+            ]);   
+
         }
     }
 
@@ -139,6 +144,7 @@ class Auth extends Controller
         $classroom->monthlyfees = $req->monthlyfees;
         $classroom->totalclasses = $req->totalclasses;
         $classroom->image = $image;
+        $classroom->teacher_id = $req->teacher_id;
         $classroom->status = "pending";
         $classroom->save();
 

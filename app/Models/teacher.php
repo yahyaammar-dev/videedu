@@ -21,4 +21,8 @@ class teacher extends Model
         return $this->hasMany(degree::class, 'teacher_id', 'id');
     }
 
+    public function classroom(){
+        return $this->hasMany(classroom::class, 'teacher_id','id');
+    }
+
 }

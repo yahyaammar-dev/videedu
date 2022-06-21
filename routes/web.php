@@ -11,3 +11,4 @@ Route::get('/', function () {
 
 require('teacher.php');
 require('admin.php');
+require('student.php');

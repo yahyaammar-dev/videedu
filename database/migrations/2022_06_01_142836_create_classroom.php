@@ -22,6 +22,7 @@ class CreateClassroom extends Migration
             $table->String('totalclasses');
             $table->String('image');
             $table->String('remarks')->nullable;
+            $table->String('teacher_id');
             $table->String('status')->default("false");
             $table->timestamps();
         });

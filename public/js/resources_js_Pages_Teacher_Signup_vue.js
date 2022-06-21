@@ -42,14 +42,13 @@ __webpack_require__.r(__webpack_exports__);
       this.teacher.idfront = this.$refs.idfront.files[0];
       this.teacher.idback = this.$refs.idback.files[0];
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/createteacher", this.teacher);
-      document.querySelector(".myform").reset();
-      this.teacher.name = null;
-      this.teacher.email = null;
-      this.teacher.password = null;
-      this.teacher.phone = null;
-      this.teacher.adminid = null;
-      this.teacher.bio = null;
-      this.teacher.hourlyrate = null;
+      document.querySelector(".myform").reset(); //   this.teacher.name = null
+      //   this.teacher.email = null
+      //   this.teacher.password = null
+      //   this.teacher.phone = null
+      //   this.teacher.adminid = null
+      //   this.teacher.bio = null
+      //   this.teacher.hourlyrate = null
     }
   }
 });
