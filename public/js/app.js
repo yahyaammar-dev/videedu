@@ -28235,6 +28235,46 @@ var map = {
 		"./resources/js/Pages/General/Home.vue",
 		"resources_js_Pages_General_Home_vue"
 	],
+	"./Student/Account": [
+		"./resources/js/Pages/Student/Account.vue",
+		"resources_js_Pages_Student_Account_vue"
+	],
+	"./Student/Account.vue": [
+		"./resources/js/Pages/Student/Account.vue",
+		"resources_js_Pages_Student_Account_vue"
+	],
+	"./Student/JoinClass": [
+		"./resources/js/Pages/Student/JoinClass.vue",
+		"resources_js_Pages_Student_JoinClass_vue"
+	],
+	"./Student/JoinClass.vue": [
+		"./resources/js/Pages/Student/JoinClass.vue",
+		"resources_js_Pages_Student_JoinClass_vue"
+	],
+	"./Student/Login": [
+		"./resources/js/Pages/Student/Login.vue",
+		"resources_js_Pages_Student_Login_vue"
+	],
+	"./Student/Login.vue": [
+		"./resources/js/Pages/Student/Login.vue",
+		"resources_js_Pages_Student_Login_vue"
+	],
+	"./Student/Register": [
+		"./resources/js/Pages/Student/Register.vue",
+		"resources_js_Pages_Student_Register_vue"
+	],
+	"./Student/Register.vue": [
+		"./resources/js/Pages/Student/Register.vue",
+		"resources_js_Pages_Student_Register_vue"
+	],
+	"./Student/ViewClassroom": [
+		"./resources/js/Pages/Student/ViewClassroom.vue",
+		"resources_js_Pages_Student_ViewClassroom_vue"
+	],
+	"./Student/ViewClassroom.vue": [
+		"./resources/js/Pages/Student/ViewClassroom.vue",
+		"resources_js_Pages_Student_ViewClassroom_vue"
+	],
 	"./Teacher/Login": [
 		"./resources/js/Pages/Teacher/Login.vue",
 		"resources_js_Pages_Teacher_Login_vue"
@@ -28396,7 +28436,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21.1","_id":"axios@0.21.4","_inB
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Admin_Adminaccount_vue":1,"resources_js_Pages_Admin_Login_vue":1,"resources_js_Pages_Admin_Signup_vue":1,"resources_js_Pages_Admin_ViewTeacher_vue":1,"resources_js_Pages_General_Footer_vue":1,"resources_js_Pages_General_Header_vue":1,"resources_js_Pages_General_Home_vue":1,"resources_js_Pages_Teacher_Login_vue":1,"resources_js_Pages_Teacher_Signup_vue":1,"resources_js_Pages_Teacher_Teacheraccount_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Admin_Adminaccount_vue":1,"resources_js_Pages_Admin_Login_vue":1,"resources_js_Pages_Admin_Signup_vue":1,"resources_js_Pages_Admin_ViewTeacher_vue":1,"resources_js_Pages_General_Footer_vue":1,"resources_js_Pages_General_Header_vue":1,"resources_js_Pages_General_Home_vue":1,"resources_js_Pages_Student_Account_vue":1,"resources_js_Pages_Student_JoinClass_vue":1,"resources_js_Pages_Student_Login_vue":1,"resources_js_Pages_Student_Register_vue":1,"resources_js_Pages_Student_ViewClassroom_vue":1,"resources_js_Pages_Teacher_Login_vue":1,"resources_js_Pages_Teacher_Signup_vue":1,"resources_js_Pages_Teacher_Teacheraccount_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

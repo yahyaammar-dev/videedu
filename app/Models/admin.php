@@ -17,4 +17,8 @@ class admin extends Model
         return $this->hasMany(teacher::class);
     }
 
+    public function students(){
+        return $this->hasMany(student::class);
+    }
+
 }

@@ -4,16 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Inertia\Inertia;
 use App\Models\admin;
+use App\Models\student;
 use App\Models\teacher;
-use App\Models\questions;
 use App\Models\classroom;
+use App\Models\questions;
+use App\Models\studentfee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class Auth extends Controller
 {
     public function Signup(Request $req){
-
         $req->validate([
             'name' => 'required|min:3',
             'email' => 'required|min:5|unique:admin,email',
@@ -23,21 +24,15 @@ class Auth extends Controller
             'idfront'=> 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
             'idback'=> 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);
-
-
         if ($req->hasFile('image')) {
             $image = $req->file('image')->store('/admin/account', 'public');
         }
-
         if ($req->hasFile('idfront')) {
             $idfront = $req->file('idfront')->store('/admin/account', 'public');
         }
-
         if ($req->hasFile('idback')) {
             $idback = $req->file('idback')->store('/admin/account', 'public');
         }
-
-
         $admin = new admin;
         $admin->name = $req->name;
         $admin->email = $req->email;
@@ -47,13 +42,11 @@ class Auth extends Controller
         $admin->idfront = $idfront;
         $admin->idback = $idback;
         $admin->save();
-
         return redirect()->route('adminsignup')->with("successMessage","Congratulations, You are registered!!!");
     }
 
-
     public function Login(REQUEST $req){
-
+        
         $req->validate([
             'email' => 'required|min:5',
             'password'=> 'required|min:8',
@@ -62,16 +55,24 @@ class Auth extends Controller
         $result = admin::where('email',$req->email)
             ->where('password',$req->password)  
             ->get()->first();
+    
+        $students = admin::find($result["id"])->students;
+        $fees = [];
+        foreach($students as $std){
+            $data = student::find($std["id"])->fees;
+            array_push($fees,$data);
+        }
 
         if(isset($result)){
- 
             $teachers = admin::find($result["id"])->teachers;
- 
-            return Inertia::render('Admin/Adminaccount',[
+            $pendingfees = studentfee::where('status','pending')->get();
+        return Inertia::render('Admin/Adminaccount',[
+                'fees' => $fees,
                 'teachers' => $teachers,
                 'admin' => $result
             ]);            
         }
+    
     }
 
     public function viewteacher(REQUEST $req){
@@ -166,6 +167,4 @@ class Auth extends Controller
     public function deleteclass(REQUEST $req){
         $classroom = classroom::find($req->c_id)->delete();
     }
-
-
 }

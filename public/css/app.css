@@ -707,6 +707,9 @@ select {
 .ml-auto {
   margin-left: auto;
 }
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -806,9 +809,6 @@ select {
 .w-10 {
   width: 2.5rem;
 }
-.w-44 {
-  width: 11rem;
-}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -837,9 +837,6 @@ select {
 }
 .flex-wrap {
   flex-wrap: wrap;
-}
-.content-between {
-  align-content: space-between;
 }
 .items-center {
   align-items: center;
