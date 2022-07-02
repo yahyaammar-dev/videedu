@@ -44,3 +44,6 @@ Route::post('/acceptdegrees',[Auth::class, 'acceptdegrees']);
 Route::post('/approveclass', [Auth::class, 'approveclass']);
 
 Route::post('/deleteclass', [Auth::class, 'deleteclass']);
+
+Route::get('/approvefees/{id}', [Auth::class, 'approveFees']);
+

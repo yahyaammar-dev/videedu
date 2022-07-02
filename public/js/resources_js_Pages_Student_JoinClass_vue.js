@@ -33,7 +33,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitpayment: function submitpayment() {
-      console.log("hello");
       this.payment.studentid = this.studentid;
       this.payment.classid = this.classid;
       this.payment.teacherid = this.teacherid;
@@ -82,7 +81,7 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   alt: "Workflow"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "mt-6 text-center text-3xl font-extrabold text-gray-900"
-}, " Register as student ")], -1
+}, " Add payment ")], -1
 /* HOISTED */
 );
 

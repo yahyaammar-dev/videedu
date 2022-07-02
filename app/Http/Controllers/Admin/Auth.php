@@ -67,7 +67,7 @@ class Auth extends Controller
             $teachers = admin::find($result["id"])->teachers;
             $pendingfees = studentfee::where('status','pending')->get();
         return Inertia::render('Admin/Adminaccount',[
-                'fees' => $fees,
+                'fee' => $fees[0],
                 'teachers' => $teachers,
                 'admin' => $result
             ]);            
@@ -167,4 +167,11 @@ class Auth extends Controller
     public function deleteclass(REQUEST $req){
         $classroom = classroom::find($req->c_id)->delete();
     }
+
+    public function approveFees(REQUEST $req){
+        $std = studentfee::where('id', $req->id)->first();
+        $std->status = "approved";
+        $std->save();
+    }
+
 }
