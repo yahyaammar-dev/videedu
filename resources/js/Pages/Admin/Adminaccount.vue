@@ -95,7 +95,7 @@
                         :key="fees.id"
                         class="mr-5 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
                     >
-                        <div v-if="fees.status != 'approved'">
+                        <div v-if="fees.status != 'approved`'">
                             <a href="#">
                                 <img
                                     class="rounded-t-lg w-96 h-72"

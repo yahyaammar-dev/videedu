@@ -35,6 +35,7 @@ class auth extends Controller
         return Inertia::render('Student/Register');
     }
 
+
     public function login(REQUEST $req){
         
         $req->validate([
@@ -49,10 +50,21 @@ class auth extends Controller
         if(isset($result)){
             $classrooms = classroom::all();
 
+            $joinedclassrooms = studentfee::where('student_id',$result->id)->where('status','approved')->get('id');
+
+            $stdclassrooms = [];
+            if(isset($joinedclassrooms)){
+                foreach($joinedclassrooms as $classroomid){
+                    $data = classroom::find($classroomid);
+                    array_push($stdclassrooms, $data);
+                }
+            }
+
             $req->session()->put('student', $result);
 
             return Inertia::render('Student/Account',[
-                'classrooms' => $classrooms
+                'classrooms' => $classrooms,
+                'joinedclassroom' => $stdclassrooms[0]
             ]);            
         }
     }
