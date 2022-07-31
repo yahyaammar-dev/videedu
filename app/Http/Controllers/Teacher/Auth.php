@@ -7,6 +7,7 @@ use App\Models\degree;
 use App\Models\teacher;
 use App\Models\classroom;
 use App\Models\questions;
+use App\Models\lecture;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -121,6 +122,14 @@ class Auth extends Controller
         $degree->save();
     }
 
+
+    public function getClass(Request $req){
+         $result = classroom::where('id',$req->id)->first();
+         return Inertia::render('Teacher/Viewclassroom',[
+            'classroom'=>$result
+         ]); 
+    }
+
     public function createClass(Request $req){
 
         $req->validate([
@@ -151,5 +160,22 @@ class Auth extends Controller
  //     return redirect()->route('teachersignup')->with("successMessage","Congratulations, You are registered!!!");
     }
 
+
+    public function postMeetingLink(REQUEST $req){
+         $result = classroom::where('id',$req->id)->first();
+         $result->link = $req->meetingLink;
+         $result->save();
+    }
+
+    public function postLecture(REQUEST $req){
+        $lecture = new lecture;
+        $lecture->title =  $req->title;
+        $lecture->classroom_id  = $req->id;
+        if ($req->hasFile('lecturefile')) {
+            $filePath = $req->file('lecturefile')->store('/teacher/account', 'public');
+        }
+        $lecture->file= $filePath;
+        $lecture->save();
+    }
 
 }

@@ -1,20 +1,12 @@
 <template lang="pug">
-    
-<!-- This example requires Tailwind CSS v2.0+ -->
-<!--
-  This example requires updating your template:
 
-  ```
-  <html class="h-full bg-gray-100">
-  <body class="h-full">
-  ```
--->
 <div class="min-h-full">
   <nav class="bg-gray-800">
+  
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-       
-       
+
+
         <div class="flex items-center">
           <div class="flex-shrink-0">
             <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
@@ -34,9 +26,9 @@
             </div>
           </div>
         </div>
-       
-       
-       
+
+
+
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
             <button type="button" class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -49,7 +41,7 @@
 
             </div>
           </div>
-        
+
 
         <div class="-mr-2 flex md:hidden">
           <!-- Mobile menu button -->
@@ -110,21 +102,14 @@
 
       </div>
 
-  
-  
-  
-  </nav>
 
 
 
 
 </template>
 
-
 <script>
 export default {
-    setup() {
-        
-    },
-}
+    setup() {},
+};
 </script>

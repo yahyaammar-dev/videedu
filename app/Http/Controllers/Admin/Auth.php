@@ -56,15 +56,23 @@ class Auth extends Controller
             ->where('password',$req->password)  
             ->get()->first();
     
-        $students = admin::find($result["id"])->students;
-        $fees = [];
-        foreach($students as $std){
-            $data = student::find($std["id"])->fees;
-            array_push($fees,$data);
+             //i am harcoding the $result["id"] with 1, will be replaced later
+        $students = admin::find(1)->students;
+        if(count($students)>0){
+            $fees = [];
+            foreach($students as $std){
+                $data = student::find($std["id"])->fees;
+                array_push($fees,$data);
+            }
+        }
+        
+        if(!$fees){
+            $fees[0]=0;
         }
 
         if(isset($result)){
-            $teachers = admin::find($result["id"])->teachers;
+            //i am harcoding the $result["id"] with 1, will be replaced later
+            $teachers = admin::find(1)->teachers;
             $pendingfees = studentfee::where('status','pending')->get();
         return Inertia::render('Admin/Adminaccount',[
                 'fee' => $fees[0],

@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teacher\Auth;
 
+
 Route::get('/signupteacher', function () {
     return Inertia::render('Teacher/Signup');
 })->name("teachersignup");
@@ -21,4 +22,10 @@ Route::post('/submittest', [Auth::class, 'submittest']);
 Route::post('/submitdegree', [Auth::class, 'submitdegree']);
 
 Route::post('/createclass', [Auth::class, 'createClass']);
+
+Route::get('/getclassroom/{id}', [Auth::class, 'getClass']);
+
+Route::post('/postMeetingLink', [Auth::class, 'postMeetingLink']);
+
+Route::post('/postLecture', [Auth::class, 'postLecture']);
 
